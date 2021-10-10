@@ -17,6 +17,11 @@ import Footer from './Footer.vue'
 
 export default {
     name:"Home",
+    data() {
+        return {
+            name:''
+        }
+    },
     components:{
         HeaderApp: Header,
         ReservationForm,
@@ -27,8 +32,9 @@ export default {
     },
     mounted(){
         let user = localStorage.getItem('user-info');
-        if(user){
-            this.$router.push({name:'Home'})
+        this.name=JSON.parse(user).name;
+        if(!user){
+            this.$router.push({name:'SignUp'})
         }   
     },
 }

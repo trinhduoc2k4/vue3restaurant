@@ -1,10 +1,9 @@
 <template>
 <div id="nav-content">
   <ul>
-    <li>home</li>
-    <li>menu</li>
-    <li>reservation</li>
-    <li>buynow</li>
+    <li>welcome {{name}}</li>
+    <li @click="logout">logout</li>
+    <li><i class="bi bi-cart-plus" style="color:#fff">Cart</i></li>
   </ul>
 </div>
 <div class="book-now">
@@ -53,6 +52,24 @@
 <script>
 export default {
     name:'Header',
+    data() {
+      return {
+        name:''
+      }
+    },
+    methods: {
+      logout(){
+        localStorage.clear();
+        this.$router.push({name:"Login"})
+      }
+    },
+    mounted(){
+        let user = localStorage.getItem('user-info');
+        this.name=JSON.parse(user).name;
+        if(!user){
+            this.$router.push({name:'SignUp'})
+        }   
+    },
 }
 </script>
 
@@ -119,7 +136,7 @@ export default {
 }
 
 
-#nav-content ul li{
+#nav-content >ul >li{
   display: inline-block;
   list-style: none;
   padding: 30px 30px;
@@ -145,5 +162,6 @@ export default {
   height: 400px;
 }
 }
+
 
 </style>
