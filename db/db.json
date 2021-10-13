@@ -2,81 +2,99 @@
   "users": [
     {
       "email": "duoc@gmail.com",
-      "name": "duoc",
-      "password": "1",
+      "name": "duoctrinh",
+      "password": "11111",
       "id": 1
+    },
+    {
+      "email": "duoc@gmail.com",
+      "password": "dadw",
+      "name": "dac",
+      "id": 2
+    },
+    {
+      "email": "duoc@gmail.com",
+      "password": "111",
+      "name": "duoc",
+      "id": 3
+    },
+    {
+      "email": "lam@gmail.com",
+      "password": "11111",
+      "name": "duoc",
+      "id": 4
     }
   ],
-  "products":[
+  "products": [
     {
-      "id":1,
-      "name":"Pizza France",
-      "desc":"ngon nhu com me nau",
+      "id": 1,
+      "name": "Pizza France",
+      "desc": "ngon nhu com me nau",
       "imgSrc": "https://img.dominos.vn/Veggie-mania.jpg",
-      "price":"160d"
+      "price": "160d"
     },
     {
-      "id":2,
-      "name":"Pizza India",
-      "desc":"ngon nhu com me nau",
+      "id": 2,
+      "name": "Pizza India",
+      "desc": "ngon nhu com me nau",
       "imgSrc": "https://inhat.vn/ha-noi/wp-content/uploads/2019/08/quan-pizza-ngon-ha-noi-1.jpg",
-      "price":"129d"
+      "price": "129d"
     },
     {
-      "id":3,
-      "name":"Bull burger",
-      "desc":"ngon nhu com me nau",
+      "id": 3,
+      "name": "Bull burger",
+      "desc": "ngon nhu com me nau",
       "imgSrc": "https://burgerking.vn/media/catalog/product/cache/1/image/1800x/040ec09b1e35df139433887a97daa66f/c/r/crunchy_whp-min_1.jpg",
-      "price":"1d"
+      "price": "1d"
     },
     {
-      "id":4,
-      "name":"Cheese burger",
-      "desc":"ngon nhu com me nau",
+      "id": 4,
+      "name": "Cheese burger",
+      "desc": "ngon nhu com me nau",
       "imgSrc": "https://gofood.vn/uploads/tong-hop-tin-tuc/san-pham/banh-burger.jpg",
-      "price":"1272d"
+      "price": "1272d"
     },
     {
-      "id":5,
-      "name":"Big star burger",
-      "desc":"ngon nhu com me nau",
+      "id": 5,
+      "name": "Big star burger",
+      "desc": "ngon nhu com me nau",
       "imgSrc": "https://www.seriouseats.com/thmb/lJzVhOHzO1eTyzKK9SBVhqqGzv0=/1500x1125/filters:fill(auto,1)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2014__09__20140918-jamie-olivers-comfort-food-insanity-burger-david-loftus-f7d9042bdc2a468fbbd50b10d467dafd.jpg",
-      "price":"12722d"
-    },{
-      "id":6,
-      "name":"Ice cream",
-      "desc":"ngon nhu com me nau",
+      "price": "12722d"
+    },
+    {
+      "id": 6,
+      "name": "Ice cream",
+      "desc": "ngon nhu com me nau",
       "imgSrc": "https://images-gmi-pmc.edge-generalmills.com/7c1096c7-bfd0-4806-a794-1d3001fe0063.jpg",
-      "price":"12722d"
+      "price": "12722d"
     },
     {
-      "id":7,
-      "name":"Pasta",
-      "desc":"ngon nhu com me nau",
+      "id": 7,
+      "name": "Pasta",
+      "desc": "ngon nhu com me nau",
       "imgSrc": "https://static.tuoitre.vn/tto/i/s626/2014/10/27/7o2pqXbX.jpg",
-      "price":"127d"
+      "price": "127d"
     },
     {
-      "id":8,
-      "name":"Hao hao",
-      "desc":"ngon nhu com me nau",
+      "id": 8,
+      "name": "Hao hao",
+      "desc": "ngon nhu com me nau",
       "imgSrc": "https://www.sieuthianhduong.com/upload/files/Mi-tom-hao-hao3.jpg",
-      "price":"1272d"
+      "price": "1272d"
     },
     {
-      "id":9,
-      "name":"Salad France",
-      "desc":"ngon nhu com me nau",
+      "id": 9,
+      "name": "Salad France",
+      "desc": "ngon nhu com me nau",
       "imgSrc": "https://cdn.tgdd.vn/2021/03/CookRecipe/Avatar/rocket-salad-dua-leo-lua-thumbnail.jpg",
-      "price":"127d"
+      "price": "127d"
     },
     {
-      "id":10,
-      "name":"Salad russian",
-      "desc":"ngon nhu com me nau",
+      "id": 10,
+      "name": "Salad russian",
+      "desc": "ngon nhu com me nau",
       "imgSrc": "https://cdn.tgdd.vn/2020/10/CookRecipe/Avatar/salad-ot-chuong-thit-ga-thumbnail.jpg",
-      "price":"11d"
+      "price": "11d"
     }
   ]
 }
-
