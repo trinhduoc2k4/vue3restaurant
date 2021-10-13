@@ -3,19 +3,22 @@
     <div class="form-sign-up">
     <form @submit.prevent="checkForm">
     <h1>Sign Up</h1>
+    <div v-if="errors.length">
+        <b>Please correct the following error(s):</b>
+    <ul>
+        <li v-for="error in errors" :key="error.id" class="feedback-error">{{error}}</li>
+    </ul>
+    </div>
         <div class="form-group">
-            <input type="text" placeholder="Enter your name" v-model="name">
-            <div class="feedback-error" v-if="name === null">Name is required</div>  
+            <input type="text" placeholder="Enter your name" v-model="name"> 
         </div>
         <div class="form-group">
             <input type="text" placeholder="Enter your email" v-model="email">
-            <div class="feedback-error" v-if="email === null">Email or valid email required</div>  
         </div>
         <div class="form-group ">
             <input type="password" placeholder="Enter your password" v-model="password">
-            <div class="feedback-error" v-if="password === null">Password is required</div>  
         </div>
-        <button>Sign Up</button>
+        <button type="submit">Sign Up</button>
         <div>
             <router-link to="/login">Have account? Login here</router-link>
         </div>
@@ -33,36 +36,45 @@ export default {
             name: '',
             email: '',
             password: '',
+            errors:[],
         }
     },
     methods: {
         async checkForm(e){
-            if(this.name && this.validEmail(this.email) && this.password){
-            let result = await axios.post("users",{
+            if(this.name && this.validEmail(this.email) && this.password.length>4){
+            let result = await axios.post(`${process.env.VUE_APP_USER_URL}users`,{
                 email:this.email,
                 password:this.password,
                 name:this.name
             })
-            alert("SignUp success");
+
             if(result.status==201){
                 localStorage.setItem("user-info",JSON.stringify(result.data))
+                alert("SignUp success");
                 this.$router.push({name:'Home'})
-                }
+            }
                     return true
             }
             this.errors = []
 
-            if(!this.name){
-                this.name = null;
+            if(this.password.length<5){
+                this.errors.push('Password at least 5 characters')
             }
 
-            if(!this.validEmail(this.email)){
-                this.email = null;
+            if(!this.email){
+                this.errors.push('Email is required')
+            }else if(!this.validEmail(this.email)) {
+                this.errors.push('Valid email required.');
             }
-        
+
+            if(!this.name){
+                this.errors.push('Name is required')
+            }
+
             if(!this.password){          
-                this.password = null;
-            }   
+                this.errors.push('Password is required')
+            }
+
         
             e.preventDefault(); 
         },
@@ -148,9 +160,7 @@ export default {
 }
 
 .feedback-error{
-    display: block;
     text-transform: uppercase;
-    margin-top: -10px;
     color:red;
 }
 

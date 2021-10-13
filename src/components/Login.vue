@@ -2,14 +2,18 @@
 <div id="login">
     <div class="form-login">
     <form @submit.prevent="checkForm">
-    <h1>Login</h1>
+    <h1>Login</h1>   
+    <div v-if="errors.length">
+        <b>Please correct the following error(s):</b>
+    <ul>
+        <li v-for="error in errors" :key="error.id" class="feedback-error">{{error}}</li>
+    </ul>
+    </div>
         <div class="form-group">
             <input type="text" placeholder="Enter your email" v-model="email">
-            <div class="feedback-error" v-if="email === null">Email or valid email required</div>  
         </div>
         <div class="form-group ">
             <input type="password" placeholder="Enter your password" v-model="password">
-            <div class="feedback-error" v-if="password === null">Password is required</div>
         </div>
         <button type="submit">Login</button>
         <div>
@@ -28,32 +32,39 @@ export default {
         return {
             email: '',
             password: '',
-            errors:[]
+            errors:[],
         }
     },
     methods: {
         async checkForm(e){
         if(this.validEmail(this.email) && this.password){
                 let result = await axios.get(
-                `users?email=${this.email}&password=${this.password}`
+                `${process.env.VUE_APP_USER_URL}users?email=${this.email}&password=${this.password}`
             )
-            alert("Login success");
             if(result.status==200 && result.data.length>0){
                 localStorage.setItem("user-info",JSON.stringify(result.data[0]))
+                alert("Succes login")
                 this.$router.push({name:'Home'})
-            } 
-                return true
+            }else if(this.password.length<5){
+                this.errors.push('Password at least 5 characters')
+            }
+            else{
+                this.errors.push('Username or password incorrect')
+            }
+                return true  
         }
         this.errors = []
 
-        if(!this.validEmail(this.email)){
-            this.email = null;
+        if(!this.email){
+            this.errors.push('Email is required')
+        }else if(!this.validEmail(this.email)) {
+            this.errors.push('Valid email required.');
         }
-        
+
         if(!this.password){          
-            this.password = null;
+            this.errors.push('Password is required')
         }
-        
+
         e.preventDefault();     
         
         },
@@ -67,6 +78,7 @@ export default {
         if(user){
             this.$router.push({name:'Home'})
         }
+        console.log(process.env.VUE_APP_USER_URL)
     }
 }
 </script>
@@ -134,9 +146,8 @@ export default {
 }
 
 .feedback-error{
-    display: block;
     text-transform: uppercase;
-    margin-top: -10px;
     color:red;
 }
+
 </style>
